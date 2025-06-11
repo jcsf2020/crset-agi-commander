@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 export default function App() {
   return (
     <div className="flex flex-col min-h-screen font-sans bg-white text-slate-800">
@@ -31,3 +32,17 @@ export default function App() {
     </div>
   );
 }
+=======
+﻿import Hero from './components/Hero';
+import './index.css';
+
+function App() {
+  return (
+    <>
+      <Hero />
+    </>
+  );
+}
+
+export default App;
+>>>>>>> c1834314d02ff849e64fea7cd4d90aaca3bc0c3b

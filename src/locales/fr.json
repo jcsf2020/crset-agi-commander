@@ -1,0 +1,26 @@
+{
+  "nav": {
+    "home": "Accueil",
+    "about": "À propos",
+    "solutions": "Solutions",
+    "demo": "Démo",
+    "contact": "Contact"
+  },
+  "hero": {
+    "title": "Bienvenue chez CRSET Solutions",
+    "subtitle": "Des solutions innovantes pour l'avenir"
+  },
+  "buttons": {
+    "learnMore": "En savoir plus",
+    "contactUs": "Nous contacter"
+  },
+  "contactForm": {
+    "title": "Contactez-nous",
+    "name": "Nom",
+    "email": "Email",
+    "message": "Message",
+    "submit": "Envoyer",
+    "success": "👍 Message envoyé avec succès !",
+    "error": "❌ Une erreur est survenue : {{error}}"
+  }
+}
