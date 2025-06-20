@@ -128,3 +128,4 @@ To connect a domain, navigate to Project > Settings > Domains and click Connect 
 
 Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
 >>>>>>> c1834314d02ff849e64fea7cd4d90aaca3bc0c3b
+# Merge conflict fix
