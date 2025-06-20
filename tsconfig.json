@@ -3,9 +3,6 @@
   "references": [
     { "path": "./tsconfig.app.json" },
     { "path": "./tsconfig.node.json" }
-<<<<<<< HEAD
-  ]
-=======
   ],
   "compilerOptions": {
     "baseUrl": ".",
@@ -19,5 +16,4 @@
     "noUnusedLocals": false,
     "strictNullChecks": false
   }
->>>>>>> c1834314d02ff849e64fea7cd4d90aaca3bc0c3b
 }
