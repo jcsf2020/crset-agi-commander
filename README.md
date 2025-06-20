@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
@@ -53,7 +52,6 @@ export default tseslint.config({
   },
 })
 ```
-=======
 # Welcome to your Lovable project
 
 ## Project info
@@ -127,5 +125,3 @@ Yes, you can!
 To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
 
 Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
->>>>>>> c1834314d02ff849e64fea7cd4d90aaca3bc0c3b
-# Merge conflict fix
