@@ -1,4 +1,6 @@
-<<<<<<< HEAD
+import './index.css';
+import Hero from './components/Hero';
+
 export default function App() {
   return (
     <div className="flex flex-col min-h-screen font-sans bg-white text-slate-800">
@@ -12,17 +14,9 @@ export default function App() {
         </nav>
       </header>
 
-      {/* Main (Placeholder) */}
+      {/* Main */}
       <main className="flex-grow bg-gradient-to-b from-slate-100 to-slate-300 flex items-center justify-center">
-        <div className="max-w-3xl text-center px-6">
-          <h2 className="text-5xl font-bold text-slate-900 mb-4">Soluções Inteligentes com IA</h2>
-          <p className="text-lg text-slate-700 mb-6">
-            Automatiza o teu negócio com tecnologia de ponta e suporte dedicado.
-          </p>
-          <button className="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-3 rounded-lg transition">
-            Saber mais
-          </button>
-        </div>
+        <Hero />
       </main>
 
       {/* Footer */}
@@ -32,17 +26,4 @@ export default function App() {
     </div>
   );
 }
-=======
-﻿import Hero from './components/Hero';
-import './index.css';
 
-function App() {
-  return (
-    <>
-      <Hero />
-    </>
-  );
-}
-
-export default App;
->>>>>>> c1834314d02ff849e64fea7cd4d90aaca3bc0c3b
