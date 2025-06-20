@@ -1,44 +1,16 @@
 {
-<<<<<<< HEAD
-  "name": "crset-clean",
-=======
   "name": "vite_react_shadcn_ts",
->>>>>>> c1834314d02ff849e64fea7cd4d90aaca3bc0c3b
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
-<<<<<<< HEAD
-    "build": "tsc -b && vite build",
-=======
     "build": "vite build",
     "build:dev": "vite build --mode development",
->>>>>>> c1834314d02ff849e64fea7cd4d90aaca3bc0c3b
     "lint": "eslint .",
     "preview": "vite preview"
   },
   "dependencies": {
-<<<<<<< HEAD
-    "react": "^19.1.0",
-    "react-dom": "^19.1.0"
-  },
-  "devDependencies": {
-    "@eslint/js": "^9.25.0",
-    "@types/react": "^19.1.2",
-    "@types/react-dom": "^19.1.2",
-    "@vitejs/plugin-react": "^4.4.1",
-    "autoprefixer": "^10.4.21",
-    "eslint": "^9.25.0",
-    "eslint-plugin-react-hooks": "^5.2.0",
-    "eslint-plugin-react-refresh": "^0.4.19",
-    "globals": "^16.0.0",
-    "postcss": "^8.5.4",
-    "tailwindcss": "^3.4.1",
-    "typescript": "~5.8.3",
-    "typescript-eslint": "^8.30.1",
-    "vite": "^6.3.5"
-=======
     "@emailjs/browser": "^4.4.1",
     "@fontsource/orbitron": "^5.2.5",
     "@hookform/resolvers": "^3.9.0",
@@ -116,6 +88,5 @@
     "typescript": "^5.5.3",
     "typescript-eslint": "^8.0.1",
     "vite": "^5.4.1"
->>>>>>> c1834314d02ff849e64fea7cd4d90aaca3bc0c3b
   }
 }
