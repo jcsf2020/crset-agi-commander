@@ -10,10 +10,10 @@ export const handler: Handler = async (event) => {
       origin: 'http://localhost'
     },
     body: JSON.stringify({
-      service_id: 'service_us4jjnk',
-      template_id: 'lead_reply_crset',
+      service_id: process.env.EMAILJS_SERVICE_ID!,
+      template_id: process.env.EMAILJS_TEMPLATE_ID!,
 
-      user_id: '7R0HNDeWf4W5I1lUxJ',
+      user_id: process.env.EMAILJS_USER_ID!,
       template_params: {
         nome,
         email,
