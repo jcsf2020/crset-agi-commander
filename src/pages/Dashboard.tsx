@@ -1,39 +1,22 @@
-import { useEffect, useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+﻿import React from 'react'
 
 export default function Dashboard() {
-  const navigate = useNavigate()
-  const [email, setEmail] = useState('')
-
-  useEffect(() => {
-    const token = localStorage.getItem('token')
-    if (!token) {
-      navigate('/login')
-      return
+  async function handleBuy() {
+    const res = await fetch('/api/checkout', { method: 'POST' })
+    const data = await res.json()
+    if (data.url) {
+      window.location.href = data.url
     }
-
-    try {
-      const payload = JSON.parse(atob(token.split('.')[1]))
-      setEmail(payload.sub)
-    } catch (err) {
-      console.error('Token inválido:', err)
-      navigate('/login')
-    }
-  }, [navigate])
-
-  function handleLogout() {
-    localStorage.removeItem('token')
-    navigate('/login')
   }
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen bg-gray-50">
-      <h1 className="text-2xl font-bold mb-4">Bem-vindo, {email}</h1>
+    <div className="flex flex-col items-center justify-center h-screen">
+      <h1 className="text-2xl font-bold mb-4">Painel CRSET 💡</h1>
       <button
-        className="px-4 py-2 bg-red-600 text-white rounded"
-        onClick={handleLogout}
+        onClick={handleBuy}
+        className="bg-green-600 text-white px-6 py-3 rounded hover:bg-green-700 transition"
       >
-        Logout
+        Comprar Agora 💸
       </button>
     </div>
   )
