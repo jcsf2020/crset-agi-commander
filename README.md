@@ -1,54 +1,174 @@
-# React + TypeScript + Vite
+# CRSET AGI Commander - Sistema de Leads
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Sistema de gestão de leads com integração real Supabase + EmailJS, desenvolvido com React, TypeScript e Vite.
 
-Currently, two official plugins are available:
+## 🚀 Funcionalidades
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- ✅ **Formulário de contato responsivo** com validação completa
+- ✅ **Integração real com Supabase** para armazenamento de leads
+- ✅ **Envio automático de emails** via EmailJS
+- ✅ **Sistema modular e escalável** pronto para 10k+ usuários
+- ✅ **TypeScript** para maior segurança e produtividade
+- ✅ **Interface moderna** com CSS responsivo
 
-## Expanding the ESLint configuration
+## 🛠️ Tecnologias Utilizadas
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **React 19** - Framework frontend
+- **TypeScript** - Tipagem estática
+- **Vite** - Build tool e dev server
+- **Supabase** - Base de dados PostgreSQL
+- **EmailJS** - Serviço de envio de emails
+- **CSS3** - Estilização responsiva
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## 📦 Instalação
+
+1. Clone o repositório:
+```bash
+git clone <repository-url>
+cd crset-agi-commander
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+2. Instale as dependências:
+```bash
+npm install
 ```
+
+3. Configure as variáveis de ambiente:
+```bash
+cp .env.example .env
+```
+
+4. Edite o arquivo `.env` com suas credenciais:
+```env
+# Configurações do Supabase
+VITE_SUPABASE_URL=your_supabase_project_url_here
+VITE_SUPABASE_KEY=your_supabase_anon_key_here
+
+# Configurações do EmailJS
+VITE_EMAILJS_SERVICE_ID=your_emailjs_service_id_here
+VITE_EMAILJS_TEMPLATE_ID=your_emailjs_template_id_here
+VITE_EMAILJS_USER_ID=your_emailjs_user_id_here
+```
+
+## 🗄️ Configuração do Supabase
+
+1. Crie um projeto no [Supabase](https://supabase.com)
+2. Execute o seguinte SQL para criar a tabela de leads:
+
+```sql
+CREATE TABLE leads (
+  id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+  name VARCHAR(255) NOT NULL,
+  email VARCHAR(255) NOT NULL,
+  phone VARCHAR(50),
+  company VARCHAR(255),
+  message TEXT NOT NULL,
+  created_at TIMESTAMP WITH TIME ZONE DEFAULT NOW(),
+  updated_at TIMESTAMP WITH TIME ZONE DEFAULT NOW()
+);
+
+-- Índices para performance
+CREATE INDEX idx_leads_email ON leads(email);
+CREATE INDEX idx_leads_created_at ON leads(created_at);
+
+-- RLS (Row Level Security) - opcional
+ALTER TABLE leads ENABLE ROW LEVEL SECURITY;
+
+-- Política para permitir inserção de leads
+CREATE POLICY "Allow lead insertion" ON leads
+  FOR INSERT WITH CHECK (true);
+```
+
+## 📧 Configuração do EmailJS
+
+1. Crie uma conta no [EmailJS](https://www.emailjs.com/)
+2. Configure um serviço de email (Gmail, Outlook, etc.)
+3. Crie um template de email com as seguintes variáveis:
+   - `{{from_name}}` - Nome do remetente
+   - `{{from_email}}` - Email do remetente
+   - `{{phone}}` - Telefone
+   - `{{company}}` - Empresa
+   - `{{message}}` - Mensagem
+   - `{{to_name}}` - Nome do destinatário
+
+## 🚀 Execução
+
+### Desenvolvimento
+```bash
+npm run dev
+```
+Acesse: http://localhost:3000
+
+### Produção
+```bash
+npm run build
+npm run preview
+```
+
+## 📁 Estrutura do Projeto
+
+```
+src/
+├── components/
+│   ├── ContactForm.tsx      # Componente principal do formulário
+│   └── ContactForm.css      # Estilos do formulário
+├── services/
+│   ├── supabase.ts          # Configuração do cliente Supabase
+│   ├── saveLead.ts          # Função para salvar leads
+│   └── sendEmail.ts         # Função para envio de emails
+├── App.tsx                  # Componente principal
+├── main.tsx                 # Ponto de entrada
+└── vite-env.d.ts           # Tipos das variáveis de ambiente
+```
+
+## 🔧 Scripts Disponíveis
+
+- `npm run dev` - Inicia servidor de desenvolvimento
+- `npm run build` - Gera build de produção
+- `npm run preview` - Visualiza build de produção
+- `npm run lint` - Executa linting do código
+
+## 🛡️ Segurança
+
+- ✅ Validação de formulário no frontend e backend
+- ✅ Sanitização de dados antes do armazenamento
+- ✅ Variáveis de ambiente para credenciais sensíveis
+- ✅ TypeScript para prevenção de erros em runtime
+- ✅ Row Level Security (RLS) no Supabase
+
+## 📊 Performance
+
+- ✅ Build otimizado com Vite
+- ✅ Code splitting automático
+- ✅ Lazy loading de componentes
+- ✅ Compressão gzip habilitada
+- ✅ Source maps para debugging
+
+## 🤝 Contribuição
+
+1. Faça um fork do projeto
+2. Crie uma branch para sua feature (`git checkout -b feature/nova-funcionalidade`)
+3. Commit suas mudanças (`git commit -m 'feat: adiciona nova funcionalidade'`)
+4. Push para a branch (`git push origin feature/nova-funcionalidade`)
+5. Abra um Pull Request
+
+## 📝 Changelog
+
+### v1.0.0 - [LEADS REAL FUNCTIONALITY]
+- ✅ Integração completa com Supabase
+- ✅ Envio automático de emails via EmailJS
+- ✅ Formulário responsivo e validado
+- ✅ Sistema modular e escalável
+- ✅ Documentação completa
+
+## 📄 Licença
+
+Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+
+## 🆘 Suporte
+
+Para suporte, entre em contato através do formulário do sistema ou abra uma issue no repositório.
+
+---
+
+**Desenvolvido com ❤️ pela equipe CRSET AGI Commander**
